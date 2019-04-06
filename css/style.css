@@ -16,32 +16,34 @@ body {
 .clr {
   clear: both; }
 
-.firstPlayer, .secondPlayer {
+.player-0, .player-1 {
   position: relative;
   width: calc(1000px / 2);
   height: 100%;
   padding: 80px;
-  background: #f7f7f7;
   text-align: center;
   float: left; }
-  .firstPlayer .player01, .secondPlayer .player01, .secondPlayer .player02 {
+  .player-0 .playerName, .player-1 .playerName {
     position: relative;
     font-size: 40px;
     text-transform: uppercase;
     letter-spacing: 2px; }
-  .firstPlayer .player01:after, .secondPlayer .player01:after, .secondPlayer .player02:after {
-    content: '';
-    position: absolute;
-    top: 15px;
-    right: -40px;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background: #eb4d4d; }
 
 .active {
-  font-weight: 300;
-  visibility: visible; }
+  background: #f7f7f7; }
+
+.active .playerName::after {
+  content: '';
+  position: absolute;
+  top: 15px;
+  right: -40px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #eb4d4d; }
+
+.active .playerName {
+  font-weight: 300; }
 
 .scoredTotal {
   font-size: 3em;
@@ -63,10 +65,15 @@ body {
     font-weight: 300;
     font-size: 2em; }
 
-.secondPlayer {
-  background: white !important; }
-  .secondPlayer .player02:after {
-    visibility: hidden; }
+.winner {
+  background: #f7f7f7;
+  color: #eb4d4d; }
+
+.winner .playerName {
+  font-weight: 300; }
+
+.winner .playerName::after {
+  visibility: hidden; }
 
 img {
   position: absolute;
@@ -87,7 +94,8 @@ img {
   transform: translate(-50%, -50%);
   width: 1000px;
   height: 600px;
-  box-shadow: -30px 15px 20px rgba(0, 0, 0, 0.5); }
+  box-shadow: -30px 15px 20px rgba(0, 0, 0, 0.5);
+  background: #fff; }
 
 button {
   position: absolute;
