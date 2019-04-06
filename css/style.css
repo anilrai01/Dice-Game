@@ -1,0 +1,128 @@
+@import url("https://fonts.googleapis.com/css?family=Lato:100,300,400");
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box; }
+
+body {
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(-45deg, #f0917f, #998ff9, #8e8e8e);
+  font-family: 'Lato';
+  color: #555;
+  background-repeat: no-repeat;
+  font-weight: 100; }
+
+.clr {
+  clear: both; }
+
+.firstPlayer, .secondPlayer {
+  position: relative;
+  width: calc(1000px / 2);
+  height: 100%;
+  padding: 80px;
+  background: #f7f7f7;
+  text-align: center;
+  float: left; }
+  .firstPlayer .player01, .secondPlayer .player01, .secondPlayer .player02 {
+    position: relative;
+    font-size: 40px;
+    text-transform: uppercase;
+    letter-spacing: 2px; }
+  .firstPlayer .player01:after, .secondPlayer .player01:after, .secondPlayer .player02:after {
+    content: '';
+    position: absolute;
+    top: 15px;
+    right: -40px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #eb4d4d; }
+
+.active {
+  font-weight: 300;
+  visibility: visible; }
+
+.scoredTotal {
+  font-size: 3em;
+  color: #eb4d4d; }
+
+.scoreBox {
+  width: 40%;
+  height: 70px;
+  padding: 10px;
+  margin: 200px auto 0;
+  background: #eb4d4d; }
+  .scoreBox .label {
+    color: #000;
+    font-size: 11px;
+    font-weight: 300; }
+  .scoreBox .scored {
+    padding: 5px;
+    color: #fff;
+    font-weight: 300;
+    font-size: 2em; }
+
+.secondPlayer {
+  background: white !important; }
+  .secondPlayer .player02:after {
+    visibility: hidden; }
+
+img {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 32%;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: -10px 5px 15px rgba(0, 0, 0, 0.5); }
+
+.playTable {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 1000px;
+  height: 600px;
+  box-shadow: -30px 15px 20px rgba(0, 0, 0, 0.5); }
+
+button {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  height: 50px;
+  color: #555;
+  font-size: 20px;
+  font-weight: 100;
+  padding: 10px;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  font-family: 'Lato';
+  transition: 0.3s ease-in-out; }
+
+button:hover {
+  letter-spacing: 4px;
+  font-weight: 600; }
+
+i {
+  color: #eb4d4d;
+  font-size: 20px; }
+
+.btn-new {
+  margin-top: 45px; }
+
+.btn-roll {
+  margin-top: 403px; }
+
+.btn-hold {
+  margin-top: 467px; }
+
+/*# sourceMappingURL=style.css.map */

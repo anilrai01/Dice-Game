@@ -1,0 +1,43 @@
+button{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 50px;
+    color: color(body-font);
+    font-size: 20px;
+    font-weight: 100;
+    padding: 10px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    font-family: 'Lato';
+    transition: 0.3s ease-in-out;
+}
+
+button:hover{
+    letter-spacing: 4px;
+    font-weight: 600;
+}
+
+i{
+    color: color(score-font);
+    font-size: 20px;
+}
+
+.btn-new{
+    margin-top: 45px;
+}
+
+.btn-roll{
+    // position: relative;
+
+    margin-top: 403px;
+}
+
+.btn-hold{
+    margin-top: 467px;
+}

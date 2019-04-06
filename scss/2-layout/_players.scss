@@ -1,0 +1,93 @@
+.firstPlayer{
+    position: relative ;
+    width: calc(1000px / 2);
+    height: 100%;
+    padding: 80px;
+    background: rgb(247, 247, 247);
+    text-align: center;
+    float: left;
+       
+    .player01{
+        position: relative;
+        font-size: 40px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+    }
+
+    .player01:after{
+        content: '';
+        position: absolute;
+        top: 15px;
+        right: -40px;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background: color(score-font);
+        // visibility: hidden;
+    }
+}
+
+.active{
+    font-weight: 300;
+    visibility: visible;
+}
+
+.scoredTotal{
+    font-size: 3em;
+    color: color(score-font);
+}
+
+.scoreBox{
+    width: 40%;
+    height: 70px;
+    padding: 10px;
+    margin: 200px auto 0;
+    background: color(score-font);
+
+    .label{
+        color: #000;
+        font-size: 11px;
+        font-weight: 300;
+    }
+    
+    .scored{
+        padding: 5px;
+        color: #fff;
+        font-weight: 300;
+        font-size: 2em;
+    }
+}
+
+
+
+
+//Second Player
+.secondPlayer{
+    @extend .firstPlayer;
+    background: rgb(255, 255, 255) !important;
+    
+
+    .player02{
+        @extend .player01;
+    }
+
+    .player02:after{
+        visibility: hidden;
+    }
+}
+
+
+//Image
+
+img{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 32%;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: -10px 5px 15px rgba(0,0,0,0.5);
+}

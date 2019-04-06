@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Dice Game</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    
+    <h1>Welcome to Cloerix Gaming Center</h1>
+
+    <div class="playTable">
+
+        <div class="firstPlayer">
+
+            <span class="player01 active">Player 1</span>
+            <br>
+            <span class="scoredTotal" id="totalScore-0">1</span>
+
+            <div class="scoreBox">
+                <div class="label">CURRENT</div>
+                <div class="scored" id="scored-0">24</div>
+            </div>
+
+        </div>
+
+        <div class="secondPlayer">
+
+            <span class="player02">Player 2</span>
+            <br>
+            <span class="scoredTotal" id="totalScore-1">2</span>
+
+            <div class="scoreBox">
+                <div class="label">CURRENT</div>
+                <div class="scored" id="scored-1">44</div>
+            </div>
+    
+        </div>
+
+        <button class="btn-new">
+            <i class="fas fa-plus-circle"></i>
+            New Game
+        </button>
+        <button class="btn-roll">
+            <i class="fas fa-sync-alt"></i>
+            Roll Dice
+        </button>
+        <button class="btn-hold">
+            <i class="far fa-arrow-alt-circle-down"></i>
+            Hold
+        </button>
+
+        <img src="img/dice-1.png" alt="Dice" class="dice"/>
+
+    </div>
+
+    <div class="clr"></div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
