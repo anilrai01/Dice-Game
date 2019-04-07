@@ -13,11 +13,9 @@ to his GLOBAL score. After that, it's the next player's turn
 
 */
 
-var scores, roundScore, activePlayer;
-
-scores = [0,0];
-roundScore = 0;
-activePlayer = 0;
+var scores, roundScore, activePlayer, gamePlaying;
+// console.log(gamePlaying);
+gameInit();
 
 
 //Changing Dice Value using selector query
@@ -32,20 +30,24 @@ activePlayer = 0;
 // console.log(x);
 
 //changing css using query selector setting dice invisible
-document.querySelector('.dice').style.visibility = 'hidden';
+// document.querySelector('.dice').style.visibility = 'hidden';
 
 //New Selector for ID's 
 //Setting up everything to zero
-document.getElementById('scored-0').textContent = '0';
-document.getElementById('scored-1').textContent = '0';
-document.getElementById('totalScore-0').textContent = '0';
-document.getElementById('totalScore-1').textContent = '0';
+// document.getElementById('scored-0').textContent = '0';
+// document.getElementById('scored-1').textContent = '0';
+// document.getElementById('totalScore-0').textContent = '0';
+// document.getElementById('totalScore-1').textContent = '0';
 
+zeroScored();
+zeroTotal();
 
 //Setting up Event Handler for button roll with Anonymous Funtion
 document.querySelector('.btn-roll').addEventListener('click', function(){
 
-    // 1. Random Number
+    if(gamePlaying) {
+
+        // 1. Random Number
     var dice = Math.floor(Math.random() * 6) + 1;
 
     // 2. Display the result
@@ -65,12 +67,18 @@ document.querySelector('.btn-roll').addEventListener('click', function(){
         // Next Player turn
         nextPlayer();
     }
+
+    } 
+    
 });
 
 
 // Setting up Event Handler for Button hold
 document.querySelector('.btn-hold').addEventListener('click', function(){
-    //Add current scored to Global Score
+    
+    if(gamePlaying){
+
+        //Add current scored to Global Score
     scores[activePlayer] += roundScore;
     
     //Update UI
@@ -81,23 +89,64 @@ document.querySelector('.btn-hold').addEventListener('click', function(){
         document.getElementById('name-'+activePlayer).textContent = 'Winner !';
         document.querySelector('.player-'+ activePlayer).classList.remove('active');
         document.querySelector('.player-'+ activePlayer).classList.add('winner');
+        gamePlaying = false;
+        // console.log(gamePlaying);
 
     }else{
         // Next Player Turn
         nextPlayer();
     }
+
+    }
+    
 });
+
+// Setting up new game button
+document.querySelector('.btn-new').addEventListener('click', gameInit);
 
 function nextPlayer(){
     activePlayer === 0 ? activePlayer = 1 : activePlayer = 0;
     roundScore = 0;
     
-    document.getElementById('scored-0').textContent = 0;
-    document.getElementById('scored-1').textContent = 0;
+    zeroScored();
 
     //document.querySelector('.firstPlayer').classList.remove('active-bg');
     //document.querySelector('.secondPlayer').classList.add('active-bg');
 
     document.querySelector('.player-0').classList.toggle('active');
     document.querySelector('.player-1').classList.toggle('active');
+}
+
+function gameInit(){
+    scores = [0,0];
+    roundScore = 0;
+    activePlayer = 0;
+
+    gamePlaying = true;
+    // console.log(gamePlaying);
+
+    zeroScored();
+    zeroTotal();
+
+    document.querySelector('.dice').style.visibility = 'hidden';
+    document.getElementById('name-0').textContent = 'Player 1';
+    document.getElementById('name-1').textContent = 'Player 2';
+
+    document.querySelector('.player-0').classList.remove('active');
+    document.querySelector('.player-1').classList.remove('active');
+    document.querySelector('.player-0').classList.add('active');
+
+    document.querySelector('.player-0').classList.remove('winner');
+    document.querySelector('.player-1').classList.remove('winner');
+    
+}
+
+function zeroScored(){
+    document.getElementById('scored-0').textContent = 0;
+    document.getElementById('scored-1').textContent = 0;
+}
+
+function zeroTotal(){
+    document.getElementById('totalScore-0').textContent = 0;
+    document.getElementById('totalScore-1').textContent = 0;
 }
