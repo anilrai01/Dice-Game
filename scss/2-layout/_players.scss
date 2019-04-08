@@ -92,12 +92,30 @@
 img{
     position: absolute;
     left: 50%;
+    top: 22%;
     transform: translateX(-50%);
-    top: 32%;
     width: 100px;
     height: 100px;
     display: flex;
     justify-content: center;
     align-items: center;
     box-shadow: -10px 5px 15px rgba(0,0,0,0.5);
+}
+
+
+.dice2{
+    top: 43%;
+}
+
+
+//Input style
+
+input[type="text"]{
+    @extend img;
+    width: 150px;
+    height: 50px;
+    top: 87%;
+    padding: 15px;
+    border: none;
+    text-align: center;
 }

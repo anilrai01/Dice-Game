@@ -11,9 +11,15 @@ it's the next players's turn.
 to his GLOBAL score. After that, it's the next player's turn
 - The first player to reach 100 points on GLOBAL score wins the game
 
+
+--Challenges
+- Player looses all his score if he scores 6 twice in a row
+- Input field to set the winning score
+- Add second dice (If only one dice is 1 then you loose all score)
+
 */
 
-var scores, roundScore, activePlayer, gamePlaying;
+var scores, roundScore, activePlayer, gamePlaying, prevDice = [0,0], winningScore;
 // console.log(gamePlaying);
 gameInit();
 
@@ -39,28 +45,41 @@ gameInit();
 // document.getElementById('totalScore-0').textContent = '0';
 // document.getElementById('totalScore-1').textContent = '0';
 
-zeroScored();
-zeroTotal();
-
 //Setting up Event Handler for button roll with Anonymous Funtion
 document.querySelector('.btn-roll').addEventListener('click', function(){
 
     if(gamePlaying) {
 
+    var dice = [0,0];
         // 1. Random Number
-    var dice = Math.floor(Math.random() * 6) + 1;
+    dice[0] = Math.floor(Math.random() * 6) + 1;
+    dice[1] = Math.floor(Math.random() * 6) + 1;
 
-    // 2. Display the result
-    var diceDOM = document.querySelector('.dice');
-    diceDOM.style.visibility = 'visible';
-    diceDOM.src = 'img/dice-' + dice + '.png';
+
+    // console.log('Active Player = ' + activePlayer);
+    if(prevDice[activePlayer] === dice){
+        prevDice[activePlayer] = 0;
+        // document.getElementById('scored-' + activePlayer).textContent = 0;
+        document.getElementById('totalScore-' + activePlayer).textContent = 0;
+        nextPlayer();
+    } else{
+
+        // 2. Display the result
+    var diceDOM1 = document.querySelector('.dice1');
+    var diceDOM2 = document.querySelector('.dice2');
+
+    diceDOM1.style.visibility = 'visible';
+    diceDOM2.style.visibility = 'visible';
+
+    diceDOM1.src = 'img/dice-' + dice[0] + '.png';
+    diceDOM2.src = 'img/dice-' + dice[1] + '.png';
 
     // console.log(dice);
 
     // 3. Update the round score if the rolled number was not 1
-    if(dice !== 1){
+    if(dice[0] !== 1 && dice[1] !== 1){
         //Add Score
-        roundScore += dice;
+        roundScore += dice[0] + dice[1];
         //Showing in UI
         document.querySelector('#scored-' + activePlayer).textContent = roundScore;
     } else {
@@ -68,7 +87,11 @@ document.querySelector('.btn-roll').addEventListener('click', function(){
         nextPlayer();
     }
 
-    } 
+    }
+
+    (dice[0] === 6 || dice[1] === 6) ? prevDice[activePlayer] = 6 : prevDice[activePlayer] = 0;
+
+    }
     
 });
 
@@ -85,7 +108,18 @@ document.querySelector('.btn-hold').addEventListener('click', function(){
     document.getElementById('totalScore-' + activePlayer).textContent = scores[activePlayer];
 
     // Check if the player won the game
-    if(scores[activePlayer] >= 20){
+    var x =  document.getElementById('setGoal').value;
+
+    if(x > 0){
+        winningScore = x;
+    } else{
+        winningScore = 100;
+    }
+
+    // console.log(typeof x);
+    // console.log(x);
+
+    if(scores[activePlayer] >= winningScore){
         document.getElementById('name-'+activePlayer).textContent = 'Winner !';
         document.querySelector('.player-'+ activePlayer).classList.remove('active');
         document.querySelector('.player-'+ activePlayer).classList.add('winner');
@@ -104,6 +138,8 @@ document.querySelector('.btn-hold').addEventListener('click', function(){
 // Setting up new game button
 document.querySelector('.btn-new').addEventListener('click', gameInit);
 
+
+
 function nextPlayer(){
     activePlayer === 0 ? activePlayer = 1 : activePlayer = 0;
     roundScore = 0;
@@ -113,6 +149,7 @@ function nextPlayer(){
     //document.querySelector('.firstPlayer').classList.remove('active-bg');
     //document.querySelector('.secondPlayer').classList.add('active-bg');
 
+    //Changing Active State
     document.querySelector('.player-0').classList.toggle('active');
     document.querySelector('.player-1').classList.toggle('active');
 }
@@ -128,7 +165,9 @@ function gameInit(){
     zeroScored();
     zeroTotal();
 
-    document.querySelector('.dice').style.visibility = 'hidden';
+    document.querySelector('.dice1').style.visibility = 'hidden';
+    document.querySelector('.dice2').style.visibility = 'hidden';
+
     document.getElementById('name-0').textContent = 'Player 1';
     document.getElementById('name-1').textContent = 'Player 2';
 
@@ -138,6 +177,7 @@ function gameInit(){
 
     document.querySelector('.player-0').classList.remove('winner');
     document.querySelector('.player-1').classList.remove('winner');
+    
     
 }
 

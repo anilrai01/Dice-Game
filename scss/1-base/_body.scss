@@ -15,6 +15,12 @@ body{
     color: color(body-font);
     background-repeat: no-repeat;
     font-weight: 100;
+
+    h1{
+        text-align: center;
+        font-weight: 400;
+        margin-top: 10px;
+    }
 }
 
 .clr{
