@@ -36,7 +36,7 @@ document.querySelector('.btn-roll').addEventListener('click', function(){
 
 
     // console.log('Active Player = ' + activePlayer);
-    if(prevDice[activePlayer] === dice){
+    if((prevDice[activePlayer] === dice[0] || prevDice[activePlayer] === dice[1])||(dice[0] === 6 && dice[2] === 6)){
         prevDice[activePlayer] = 0;
         // document.getElementById('scored-' + activePlayer).textContent = 0;
         document.getElementById('totalScore-' + activePlayer).textContent = 0;
@@ -69,6 +69,7 @@ document.querySelector('.btn-roll').addEventListener('click', function(){
     }
 
     (dice[0] === 6 || dice[1] === 6) ? prevDice[activePlayer] = 6 : prevDice[activePlayer] = 0;
+    // prevDice[activePlayer] = dice;
 
     }
     
