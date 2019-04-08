@@ -21,29 +21,8 @@ to his GLOBAL score. After that, it's the next player's turn
 
 var scores, roundScore, activePlayer, gamePlaying, prevDice = [0,0], winningScore;
 // console.log(gamePlaying);
+
 gameInit();
-
-
-//Changing Dice Value using selector query
-//setter
-//document.querySelector('#scored-' + activePlayer).textContent = dice;
-
-// document.querySelector('#scored-' + activePlayer).innerHTML = '<em>' + dice + '</em>';
-
-// Reading Score
-//getter
-// var x = document.querySelector('#totalScore-0').textContent;
-// console.log(x);
-
-//changing css using query selector setting dice invisible
-// document.querySelector('.dice').style.visibility = 'hidden';
-
-//New Selector for ID's 
-//Setting up everything to zero
-// document.getElementById('scored-0').textContent = '0';
-// document.getElementById('scored-1').textContent = '0';
-// document.getElementById('totalScore-0').textContent = '0';
-// document.getElementById('totalScore-1').textContent = '0';
 
 //Setting up Event Handler for button roll with Anonymous Funtion
 document.querySelector('.btn-roll').addEventListener('click', function(){
@@ -145,10 +124,7 @@ function nextPlayer(){
     roundScore = 0;
     
     zeroScored();
-
-    //document.querySelector('.firstPlayer').classList.remove('active-bg');
-    //document.querySelector('.secondPlayer').classList.add('active-bg');
-
+    
     //Changing Active State
     document.querySelector('.player-0').classList.toggle('active');
     document.querySelector('.player-1').classList.toggle('active');
