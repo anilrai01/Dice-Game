@@ -87,10 +87,13 @@ document.querySelector('.btn-hold').addEventListener('click', function(){
     document.getElementById('totalScore-' + activePlayer).textContent = scores[activePlayer];
 
     // Check if the player won the game
-    var x =  document.getElementById('setGoal').value;
+    var input =  document.getElementById('setGoal').value;
 
-    if(x > 0){
-        winningScore = x;
+    //Type Coersion
+    //Undefined, 0, null or "" are coerced to false
+    //Anything else is coerced to true
+    if(input){
+        winningScore = input;
     } else{
         winningScore = 100;
     }
@@ -124,7 +127,7 @@ function nextPlayer(){
     roundScore = 0;
     
     zeroScored();
-    
+     0
     //Changing Active State
     document.querySelector('.player-0').classList.toggle('active');
     document.querySelector('.player-1').classList.toggle('active');
