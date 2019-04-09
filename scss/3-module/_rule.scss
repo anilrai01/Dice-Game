@@ -1,0 +1,17 @@
+.rules{
+    margin: 20px auto 0 ;
+    width: 700px;
+    height: auto;
+    padding: 10px;
+    color:rgb(44, 44, 44);
+    font-size: 18px;
+    font-family: Arial, Helvetica, sans-serif;
+
+    ul li{
+        list-style-type: disc;
+        justify-content: center;
+        text-align: justify;
+        list-style-image: url('/img/console16.png');
+        margin: 5px;
+    }
+}
