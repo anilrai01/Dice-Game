@@ -2,7 +2,8 @@
     position: relative;
     top: 350px;
     left: 50%;
-    margin-bottom: 150px;
+    // margin-bottom: 150px;
+    -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
     width: 1000px;
     height: 600px;
